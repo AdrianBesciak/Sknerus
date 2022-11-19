@@ -13,7 +13,7 @@ class Lamp:
                                      str(room_id), 'light'])
         self.init_pin()
 
-    def publish_light_state(self, pin):
+    def publish_state(self, pin):
         self.mqtt.publish(self.topic_prefix+'/state',
                           'on' if GPIO.input(self.pin) == 1 else 'off')
 
@@ -28,7 +28,7 @@ class Lamp:
     def process(self, topic, message):
         request = topic.split('/')[-1]
         if request == 'get':
-            self.publish_light_state(None)
+            self.publish_state(None)
         elif request == 'set':
             print("Setting LED to ", message)
             if message == b'on':

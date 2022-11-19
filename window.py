@@ -13,7 +13,7 @@ class Window:
                                      str(room_id), 'window', str(window_id)])
         self.init_switch()
 
-    def publish_switch_state(self, pin):
+    def publish_state(self, pin):
         self.mqtt.publish(self.topic_prefix+'/state',
                           'open' if GPIO.input(self.switch_pin) == 1 else 'closed')
 
@@ -21,7 +21,7 @@ class Window:
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(self.switch_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.add_event_detect(self.switch_pin, GPIO.BOTH, bouncetime=200)
-        GPIO.add_event_callback(self.switch_pin, self.publish_switch_state)
+        GPIO.add_event_callback(self.switch_pin, self.publish_state)
 
     def notify(self, topic, message):
         if self.topic_prefix in topic:
@@ -30,7 +30,7 @@ class Window:
     def process(self, topic, message):
         request = topic.split('/')[-1]
         if request == 'get':
-            self.publish_switch_state(None)
+            self.publish_state(None)
         elif request == 'set':
             print("Setting servo to ", message)
             if message == b'open':
