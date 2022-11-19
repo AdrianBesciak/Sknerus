@@ -4,8 +4,8 @@ Topic: "room/<int>/window/<int>/get"             Message: ""                    
 Topic: "room/<int>/window/<int>/set"             Message: "<open/closed>"        Direction: server->node
 
 Temperature:
-Topic: "room/<int>/get"                          Message: ""                     Direction: server->node
-Topic: "room/<int>/value"                        Message: "<int>"                Direction: node->server //Given in celsius degrees
+Topic: "room/<int>/temperature/get"              Message: ""                     Direction: server->node
+Topic: "room/<int>/temperature/value"            Message: "<int>"                Direction: node->server //Given in celsius degrees
 
 Radiator:
 Topic: "room/<int>/radiator/<int>/state/rsp"     Message: "<on/off"              Direction: node->server
@@ -14,3 +14,11 @@ Topic: "room/<int>/radiator/<int>/state/get"     Message: ""                    
 Topic: "room/<int>/radiator/<int>/value/get"     Message: ""                     Direction: server->node
 Topic: "room/<int>/radiator/<int>/state/set"     Message: "<on/off>"             Direction: server->node
 Topic: "room/<int>/radiator/<int>/value/set"     Message: "<int>"                Direction: server->node
+
+Light:
+Topic: "room/<int>/light/state"                  Message: "<on/off>"             Direction: node->server
+Topic: "room/<int>/light/set"                    Message: "<on/off>"             Direction: server->node
+
+Boiler:
+Topic: "room/<int>/boiler/state"                  Message: "<on/off>"            Direction: node->server
+Topic: "room/<int>/boiler/set"                    Message: "<on/off>"            Direction: server->node
