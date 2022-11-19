@@ -1,0 +1,6 @@
+Window:
+
+Topic: "room/<int>/window/<int>/window_state" 			Message: "<open/closed>"		Direction: node->server
+Topic: "room/<int>/window/<int>/get_window_state" 		Message: ""							Direction: server->node
+Topic: "room/<int>/window/<int>/change_window_state" 	Message: "<open/closed>"	Direction: server->node
+
