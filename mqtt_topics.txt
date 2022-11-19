@@ -17,10 +17,10 @@ Topic: "room/<int>/radiator/<int>/value/set"     Message: "<int>"               
 
 Light:
 Topic: "room/<int>/light/0/state/rsp"            Message: "<on/off>"             Direction: node->server
-Topic: "room/<int>/light/0/state/get"            Message: "<on/off>"             Direction: server->node
+Topic: "room/<int>/light/0/state/get"            Message: ""                     Direction: server->node
 Topic: "room/<int>/light/0/state/set"            Message: "<on/off>"             Direction: server->node
 
 Boiler:
 Topic: "room/<int>/boiler/0/state/rsp"           Message: "<on/off>"             Direction: node->server
-Topic: "room/<int>/boiler/0/state/get"           Message: "<on/off>"             Direction: server->node
+Topic: "room/<int>/boiler/0/state/get"           Message: ""                     Direction: server->node
 Topic: "room/<int>/boiler/0/state/set"           Message: "<on/off>"             Direction: server->node
