@@ -1,15 +1,16 @@
 Window:
-Topic: "room/<int>/window/<int>/window_state"           Message: "<open/closed>"        Direction: node->server
-Topic: "room/<int>/window/<int>/get_window_state"       Message: ""                     Direction: server->node
-Topic: "room/<int>/window/<int>/change_window_state"    Message: "<open/closed>"        Direction: server->node
+Topic: "room/<int>/window/<int>/state"           Message: "<open/closed>"        Direction: node->server
+Topic: "room/<int>/window/<int>/get"             Message: ""                     Direction: server->node
+Topic: "room/<int>/window/<int>/set"             Message: "<open/closed>"        Direction: server->node
 
 Temperature:
-Topic: "room/<int>/get_temperature"     Message: ""                                     Direction: server->node
-Topic: "room/<int>/temperature"         Message: "<int>"                                Direction: server->node //Given in celsius degrees
+Topic: "room/<int>/get"                          Message: ""                     Direction: server->node
+Topic: "room/<int>/value"                        Message: "<int>"                Direction: node->server //Given in celsius degrees
 
 Radiator:
-Topic: "room/<int>/radiator/<int>/radiator_state"               Message: "<on/off>"     Direction: node->server
-Topic: "room/<int>/radiator/<int>/radiator_temperature"         Message: "<int>"        Direction: node->server //Given in celsius degrees
-Topic: "room/<int>/radiator/<int>/get_radiator_state"           Message: ""             Direction: server->node
-Topic: "room/<int>/radiator/<int>/get_radiator_temperature"     Message: ""             Direction: server->node
-Topic: "room/<int>/radiator/<int>/change_radiator_state"        Message: "<on/off>"     Direction: server->node
+Topic: "room/<int>/radiator/<int>/state/rsp"     Message: "<on/off"              Direction: node->server
+Topic: "room/<int>/radiator/<int>/value/rsp"     Message: "<int>"                Direction: node->server //Given in celsius degrees
+Topic: "room/<int>/radiator/<int>/state/get"     Message: ""                     Direction: server->node
+Topic: "room/<int>/radiator/<int>/value/get"     Message: ""                     Direction: server->node
+Topic: "room/<int>/radiator/<int>/state/set"     Message: "<on/off>"             Direction: server->node
+Topic: "room/<int>/radiator/<int>/value/set"     Message: "<int>"                Direction: server->node
