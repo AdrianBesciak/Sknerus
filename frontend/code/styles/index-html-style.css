@@ -1,0 +1,7 @@
+/* Imports -> must preeced everything else*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+@import url("universal/debug.css");
+@import url("universal/colors.css");
+@import url("universal/global-style.css");
+@import url("index/main-style.css");
+@import url("index/background.css");

@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    height: 100%;
+    display: grid;
+    justify-items: space-around;
+    align-items: center;
+    grid-template: 1 fr / 1fr 4fr;
+    grid-template-areas: "nav page-hero";
+}
+
+
+/* Navigation */
+nav {
+    height: 100%;
+    font-size: 1.5rem;    
+    grid-area: nav;
+    /* display: grid;
+    justify-items: space-around;
+    align-items: center;
+    grid-template: 4 fr  1fr / 1fr;
+    grid-template-areas: "page-hero-nav control-nav"; */
+    margin: 5%;
+}
+
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 5% 0;
+}
+
+nav li{
+    padding: 2% 0;
+}
+
+#service-info{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#service-info #logo-icon{
+    height: 3rem;
+}
+
+/* Page Hero */
+main {
+    grid-area: page-hero;
+}

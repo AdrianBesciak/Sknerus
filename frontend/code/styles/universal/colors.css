@@ -1,0 +1,20 @@
+:root,
+:root.light {
+    --brighter-background-color: #E8EDDF;
+    --darker-background-color: #CFDBD5;
+    --marked-element-color: #F5CB5C;
+    --primary-text-color: #242423;
+    --secondary-text-color: #0e0c38;
+    --border-color: #0e0c38;
+    --regular-btn-background: #E8D4D1;
+}
+
+:root.dark {
+    --brighter-background-color: #E8EDDF;
+    --darker-background-color: #CFDBD5;
+    --marked-element-color: #F5CB5C;
+    --primary-text-color: #242423;
+    --secondary-text-color: #0e0c38;
+    --border-color: #0e0c38;
+    --regular-btn-background: #E8D4D1;
+}
