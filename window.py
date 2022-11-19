@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 from gpiozero import Servo
 from time import sleep
 import paho.mqtt.client as MQTT
-
+import threading
 
 class Window:
     def __init__(self, servo_pin: int, switch_pin: int, mqtt: MQTT.Client, room_id: int, window_id: int):
@@ -13,7 +13,7 @@ class Window:
                                      str(room_id), 'window', str(window_id)])
         self.init_switch()
 
-    def publish_switch_state(self):
+    def publish_switch_state(self, pin):
         self.mqtt.publish(self.topic_prefix+'/state',
                           'open' if GPIO.input(self.switch_pin) == 1 else 'closed')
 
@@ -30,17 +30,27 @@ class Window:
     def process(self, topic, message):
         request = topic.split('/')[-1]
         if request == 'get':
-            self.publish_switch_state()
+            self.publish_switch_state(None)
         elif request == 'set':
-            if message == 'open':
-                self.servo.value = 1
-            elif message == 'closed':
+            print("Setting servo to ", message)
+            if message == b'open':
                 self.servo.value = -1
+            elif message == b'closed':
+                self.servo.value = 0.5
 
+mqtt = MQTT.Client()
+mqtt.connect("siur123.pl", port = 18833)
 
+w = Window(14, 21, mqtt, 19,88)
 
+mqtt.on_message = lambda client, data, message:w.notify(message.topic, message.payload)
+mqtt.subscribe('#')
 
+t = threading.Thread(target=mqtt.loop_forever)
+t.start()
 
+while True:
+    sleep(1000)
 # def window_change_callback(channel):
 #     print("GPIO ", channel, " has new state: ", GPIO.input(channel))
 
