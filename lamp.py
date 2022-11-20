@@ -10,11 +10,11 @@ class Lamp:
         self.pin = led_pin
         self.mqtt = mqtt
         self.topic_prefix = '/'.join(['room',
-                                     str(room_id), 'light'])
+                                     str(room_id), 'light', '0', 'state'])
         self.init_pin()
 
     def publish_state(self, pin):
-        self.mqtt.publish(self.topic_prefix+'/state',
+        self.mqtt.publish(self.topic_prefix+'/rsp',
                           'on' if GPIO.input(self.pin) == 1 else 'off')
 
     def init_pin(self):
