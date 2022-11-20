@@ -3,7 +3,10 @@ from gpiozero import Servo
 from time import sleep
 import paho.mqtt.client as MQTT
 import threading
+import sys
 
+room_id = int(sys.argv[1])
+led_pin = int(sys.argv[2])
 
 class Lamp:
     def __init__(self, led_pin: int, mqtt: MQTT.Client, room_id: int):
@@ -40,7 +43,7 @@ class Lamp:
 mqtt = MQTT.Client()
 mqtt.connect("siur123.pl", port=18833)
 
-w = Lamp(21, mqtt, 15)
+w = Lamp(led_pin, mqtt, room_id)
 
 mqtt.on_message = lambda client, data, message: w.notify(
     message.topic, message.payload)

@@ -1,5 +1,7 @@
 from lamp import *
 
+room_id = int(sys.argv[1])
+radiator_pin = int(sys.argv[2])
 
 class Radiator(Lamp):
     def __init__(self, led_pin: int, mqtt: MQTT.Client, room_id: int):
@@ -11,7 +13,7 @@ class Radiator(Lamp):
 mqtt = MQTT.Client()
 mqtt.connect("siur123.pl", port=18833)
 
-w = Radiator(21, mqtt, 15)
+w = Radiator(radiator_pin, mqtt, room_id)
 
 mqtt.on_message = lambda client, data, message: w.notify(
     message.topic, message.payload)

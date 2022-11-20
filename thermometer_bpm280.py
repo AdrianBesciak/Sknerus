@@ -7,6 +7,9 @@ except ImportError:
     from smbus import SMBus
 from bmp280 import BMP280
 
+import sys
+
+room_id = int(sys.argv[1])
 
 class Thermometer_BMP280:
     def __init__(self, mqtt: MQTT.Client, room_id: int):
@@ -34,7 +37,7 @@ class Thermometer_BMP280:
 mqtt = MQTT.Client()
 mqtt.connect("siur123.pl", port=18833)
 
-w = Thermometer_BMP280(mqtt, 19)
+w = Thermometer_BMP280(mqtt, room_id)
 
 mqtt.on_message = lambda client, data, message: w.notify(
     message.topic, message.payload)

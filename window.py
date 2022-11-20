@@ -3,6 +3,12 @@ from gpiozero import Servo
 from time import sleep
 import paho.mqtt.client as MQTT
 import threading
+import sys
+
+room_id = int(sys.argv[1])
+window_id = int(sys.argv[2])
+servo_pin = int(sys.argv[2])
+switch_pin = int(sys.argv[2])
 
 class Window:
     def __init__(self, servo_pin: int, switch_pin: int, mqtt: MQTT.Client, room_id: int, window_id: int):
@@ -41,7 +47,7 @@ class Window:
 mqtt = MQTT.Client()
 mqtt.connect("siur123.pl", port = 18833)
 
-w = Window(14, 21, mqtt, 19,88)
+w = Window(servo_pin, switch_pin, mqtt, room_id, window_id)
 
 mqtt.on_message = lambda client, data, message:w.notify(message.topic, message.payload)
 mqtt.subscribe('#')
