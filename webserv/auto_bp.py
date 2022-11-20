@@ -26,17 +26,17 @@ rules = {
         "light": {"state": "off"},
     },
     "max_heat": {
-        "window": {"state": "close"},
+        "window": {"state": "closed"},
         "radiator": {"state": "on"},
         "boiler": {"state": "on"}
     },
     "min_heat": {
         "window": {"state": "open"},
-        "radiation": {"state": "off"},
-        "boiler": {"state": "off"},
+        "radiator": {"state": "off"},
+        # "boiler": {"state": "off"},
     },
     "off_all": {
-        "window": {"state": "close"},
+        "window": {"state": "closed"},
         "radiator": {"state": "off"},
         "light": {"state": "off"},
         "boiler": {"state": "off"},
@@ -71,13 +71,16 @@ def apply_rule_for_room(room_id, rule):
     return Response(None, 200)
 
 
-freq = 1
+freq = 2
 lmem = {0: False}
 def lights():
     if lmem[0]:
-        apply_rule("lights_on")
-    else:
+        apply_rule("max_heat")
+        set_device("room.1.window.0", "state", "open")
         apply_rule("lights_off")
+    else:
+        apply_rule("min_heat")
+        apply_rule("lights_on")
     lmem[0] = not lmem[0]
     
 

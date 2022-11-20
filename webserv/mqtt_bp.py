@@ -3,49 +3,11 @@ from flask.wrappers import Response
 from flask_mqtt import Mqtt
 from flask_apscheduler import APScheduler
 from datetime import datetime as dt
-
-filter = "#"
-querrying_period = 2
-timeout = 5
-
-MA_CONFIG = {
-    "MQTT_BROKER_URL": "siur123.pl",
-    "MQTT_BROKER_PORT": 18833,
-    "MQTT_USERNAME": "hackaton",
-    "MQTT_PASSWORD": "",
-    "MQTT_KEEPALIVE": 30,
-    "MQTT_TLS_ENABLED": False,
-}
-
-devices_knownbefore = [
-    "room/0/radiator/0//"
-]
+from config import *
 
 devices = {}
-"""
-    device_hash: {
-        tags: {
-            tag: value
-        }
-        fields: {
-            (value, last_time_updated)
-        }
-    }
-"""
-
-mqtt_client = Mqtt()
-
-fields_by_device_type = {
-    "window": ("state",),
-    "temperature": ("value",),
-    "radiator": ("state", "value"),
-    "light": ("state",),
-    "boiler": ("state",),
-}
-
 
 def unify(field, content):  # 2be changed prolly
-    return content
     # if field == "status":
     #     if content in ("open", "on"):
     #         si = 1
@@ -56,10 +18,13 @@ def unify(field, content):  # 2be changed prolly
     #     return (si, field)
     # elif field == "value":
     #     return float(content)
+    return content
+
 
 def is_setable(field):
     return field == "status"
 
+## PARSER
 class MQTT_Topic:
     format = (
         "room_type/room_id/device_type/device_id",  # device_tags
@@ -90,10 +55,14 @@ for topic in devices_knownbefore:
     device_tags = topic.to_dict()
     device_type = device_tags["device_type"]
     fields = fields_by_device_type[device_type]
+    field_keys = fields.keys()
     devices[device_hash] = {
         "tags": device_tags,
-        "fields": {field: (None, dt.now()) for field in fields}
+        "fields": {field_key: (None, dt.now()) for field_key in field_keys},
+        "field_properties": fields
     }
+
+mqtt_client = Mqtt()
 
 ## MQTT -> WEBSERV    
 @mqtt_client.on_connect()
@@ -117,10 +86,7 @@ def handle_mqtt_message(client, userdata, message):
         content = unify(topic.field, content)
 
         devices[device_hash]["fields"][topic.field] = (content, dt.now())
-
-    # return Response(None, 200)
-    #return Response("Method not implemented", 400) 
-    
+    return
 
 ## WEBSERV -> MQTT
 mqtt_bp = Blueprint("mqtt", __name__, url_prefix="/mqtt")
@@ -130,25 +96,23 @@ def get_field(device_hash, field):
     topic_device_hash = device_hash.replace('.', '/')
     topic = f'{topic_device_hash}/{field}/get'
     rc = mqtt_client.publish(topic, None)
-    if rc[0]:
-        return Response(None, 200)
-    else: 
-        return Response("Sth went wrong", 400)
+    return Response(None, 200) if not rc[0] else Response("Sth went wrong", 400)
 
-@mqtt_bp.route("<device_hash>/<field>/set/<content>")
+
+@mqtt_bp.route("<device_hash>/<field>/set/<content>", methods=["GET", "POST"])
 def set_field(device_hash, field, content):
     topic_device_hash = device_hash.replace('.', '/')
     topic = f'{topic_device_hash}/{field}/set'
     rc = mqtt_client.publish(topic, content)
-    return Response(None, 200) if not rc[0] \
-        else Response("Sth went wrong") # predict fail
+    return Response(None, 200) if not rc[0] else Response("Sth went wrong", 400)
+
 
 ## CRON
 def querry_nodes():
     for device_hash, device in devices.items():
         for field in device["fields"].keys():
             get_field(device_hash, field)
-    print(devices)
+    # print(devices) #DG
 
 scheduler = APScheduler()
 scheduler.add_job(id='querry_nodes', func=querry_nodes, 

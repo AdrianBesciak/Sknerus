@@ -2,6 +2,7 @@ from flask import Blueprint, jsonify, redirect
 from flask.wrappers import Response
 from datetime import datetime as dt
 from config import *
+from mqtt_bp import set_field
 
 devices = {}
 
@@ -29,5 +30,7 @@ def get_device(device_hash):
 @uapi_bp.route("<device_hash>/set/<field>/<content>", methods=["GET", "POST"])
 def set_device(device_hash, field, content):
     # cpy: <device_hash>/<field>/set/<content>
-    rel_url = f"{device_hash}/{field}/set/{content}"
-    return redirect("/mqtt/" + rel_url)
+    # rel_url = f"{device_hash}/{field}/set/{content}"
+    # return redirect("/mqtt/" + rel_url)
+    return set_field(device_hash, field, content)
+
