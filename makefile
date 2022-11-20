@@ -5,9 +5,9 @@ living_room:
 	python3 thermometer_bpm280.py 1
 
 bathroom:
-	python3 boiler.py 2 boiler_pin &
-	python3 lamp.py 2 led_pin &
-	python3 window.py 1 0 servo_pin, switch_pin
+	python3 boiler.py 2 18 &
+	python3 lamp.py 2 15 &
+	python3 window.py 1 0 14 15
 
 hall:
-	python3 lamp.py 3 led_pin &
+	python3 lamp.py 3 15 &
