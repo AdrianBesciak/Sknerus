@@ -7,8 +7,8 @@ import sys
 
 room_id = int(sys.argv[1])
 window_id = int(sys.argv[2])
-servo_pin = int(sys.argv[2])
-switch_pin = int(sys.argv[2])
+servo_pin = int(sys.argv[3])
+switch_pin = int(sys.argv[4])
 
 class Window:
     def __init__(self, servo_pin: int, switch_pin: int, mqtt: MQTT.Client, room_id: int, window_id: int):
