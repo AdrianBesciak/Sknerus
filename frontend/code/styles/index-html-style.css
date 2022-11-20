@@ -3,8 +3,8 @@
 /* @import url("universal/debug.css"); */
 @import url("universal/colors.css");
 @import url("universal/global-style.css");
+@import url("index/loading-state-page-hero.css");
 @import url("index/main-style.css");
 @import url("index/apartment.css");
 @import url("index/devices-subsection.css");
 @import url("index/device-detail-info.css");
-@import url("index/background.css");

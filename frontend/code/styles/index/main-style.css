@@ -1,12 +1,20 @@
 body {
     margin: 0;
+}
+
+
+#active-state-page-heroes {
+    margin: 0;
+    padding: 0;
     height: 100%;
-    display: grid;
+    /* display: grid; */
+    display: none;
     align-items: stretch;
     column-gap: 1%;
     grid-template: "nav page-hero device-info" 1fr
         /2fr 6fr 3fr;
 }
+
 
 /* Navigation */
 
@@ -17,6 +25,7 @@ nav {
     margin: 0;
     padding: 3%;
     display: grid;
+    /* visibility: hidden; */
     grid-template: "page-hero-nav" 4fr
         "control-nav" 1fr
         / 1fr;
@@ -28,6 +37,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: left;
+    margin-bottom: 10%;
 }
 
 #logo-icon {
@@ -51,7 +61,7 @@ nav ul {
 }
 
 nav li {
-    margin: 8% 0;
+    margin: 1% 0;
     display: flex;
     align-items: center;
     border-radius: 5px;

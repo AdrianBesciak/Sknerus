@@ -22,152 +22,186 @@
     <!-- Links -->
     <link rel="stylesheet" href="./styles/index-html-style.css">
     <script src="./scripts/scripts.js" defer></script>
+    <script src="./scripts/loadDeviceData.js" defer></script>
+
+    
 
 </head>
 
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div id="page-hero-nav">
-            <div id="service-info">
-                <img id="logo-icon" src="./images/logo.png" />
-                <h2 id="service-name">Skneruś</h1>
-            </div>
-            <ul>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/dashboard.svg" />
-                    Panel Sterowania
-                </li>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/harmonogram.svg" />
-                    Harmonogram
-                </li>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/statistics.svg" />
-                    Statystyki
-                </li>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/notifications.svg" />
-                    Powiadomienia
-                </li>
-            </ul>
-        </div>
-        <div id="control-nav">
-            <ul>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/settings.svg" />
-                    Ustawienia
-                </li>
-                <li class="nav-btn">
-                    <img class="nav-icon" src="./images/icons/logOut.svg" />
-                    Wyloguj
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!-- Loading State -->
+    <div id="loading-state-page-heroes">
+        <img id="loading-state-logo-icon" src="./images/logo.png" />
+        <h2 id="loading-state-service-name">Skneruś</h1>
+    </div>
 
-    <main id="page-hero">
-        <!-- Page Hero -->
-        <h1 id="page-hero-title">Panel Sterowania</h1>
-        <div id="page-hero-main-contenr">
-            <div id="home-layout">
-                <div id="apartment">
-                    <div class="room" id="hallway-plus-kitchen">
-                        <div class="furnishing door"></div>
-                        <div class="furnishing sensor light" id="light-on-side"></div>
-                        <div class="furnishing sensor light" id="light-in-the-middle"></div>
-                        <div class="furnishing sensor pir" id="pir-at-entrance"></div>
-                    </div>
-                    <div class="room" id="main-room">
-                        <div class="furnishing door"></div>
-                        <div class="furnishing sensor window"></div>
-                        <div class="furnishing sensorlight" id="light-main-left"></div>
-                        <div class="furnishing sensor light" id="light-main-right"></div>
-                        <div class="furnishing sensor radiator" id="radiator-main-1"></div>
-                    </div>
-                    <div class="room" id="bathroom">
-                        <div class="furnishing door"></div>
-                        <div class="furnishing sensor window"></div>
-                        <div class="furnishing sensor light" id="light-bathroom-left"></div>
-                        <div class="furnishing sensorlight" id="light-bathroom-right"></div>
-                        <div class="furnishing sensor boiler" id="boiler-bathroom-1"></div>
-                    </div>
+    <!-- Active State -->
+    <div id="active-state-page-heroes">
+        <nav>
+            <div id="page-hero-nav">
+                <div id="service-info">
+                    <img id="logo-icon" src="./images/logo.png" />
+                    <h2 id="service-name">Skneruś</h1>
                 </div>
-            </div>
-        </div>
-        <div id="page-hero-subsections">
-            <div id="devices-info-subsection">
-                <h3>Devices</h3>
-                <ul id="device-container">
-                    <li class="device-tile" id="device-tile-radiator-main">
-                        <div class="device-name"><span>type: </span>Radiator</div>
-                        <div class="device-location"><span>location: </span>living-room</div>
-                        <div class="device-status"><span>status: </span>online</div>
-                        <div class="device-reading"><span>reading: </span>36</div>
+                <ul>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/dashboard.svg" />
+                        Panel Sterowania
                     </li>
-                    <li class="device-tile" id="device-tile-radiator-test2">
-                        <div class="device-name"><span>type: </span>Radiator</div>
-                        <div class="device-location"><span>location: </span>living-room</div>
-                        <div class="device-status"><span>status: </span>online</div>
-                        <div class="device-reading"><span>reading: </span>36</div>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/harmonogram.svg" />
+                        Harmonogram
                     </li>
-                    <li class="device-tile" id="device-tile-radiator-test3">
-                        <div class="device-name"><span>type: </span>Radiator</div>
-                        <div class="device-location"><span>location: </span>living-room</div>
-                        <div class="device-status"><span>status: </span>online</div>
-                        <div class="device-reading"><span>reading: </span>36</div>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/statistics.svg" />
+                        Statystyki
                     </li>
-                    <li class="device-tile" id="device-tile-radiator-test4">
-                        <div class="device-name"><span>type: </span>Radiator</div>
-                        <div class="device-location"><span>location: </span>living-room</div>
-                        <div class="device-status"><span>status: </span>online</div>
-                        <div class="device-reading"><span>reading: </span>36</div>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/notifications.svg" />
+                        Powiadomienia
                     </li>
-                    <li class="device-tile" id="device-tile-radiator-main">
-                        <div class="device-name"><span>type: </span>Radiator</div>
-                        <div class="device-location"><span>location: </span>living-room</div>
-                        <div class="device-status"><span>status: </span>online</div>
-                        <div class="device-reading"><span>reading: </span>36</div>
-                    </li>
-
                 </ul>
             </div>
+            <div id="control-nav">
+                <ul>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/settings.svg" />
+                        Ustawienia
+                    </li>
+                    <li class="nav-btn">
+                        <img class="nav-icon" src="./images/icons/logOut.svg" />
+                        Wyloguj
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main id="page-hero">
+            <!-- Page Hero -->
+            <h1 id="page-hero-title">Panel Sterowania</h1>
+            <div id="page-hero-main-contenr">
+                <div id="home-layout">
+                    <div id="apartment">
+                        <div class="room" id="hallway-plus-kitchen">
+                            <div class="furnishing door"></div>
+                            <div class="furnishing sensor light" id="light-on-side"></div>
+                            <div class="furnishing sensor light" id="light-in-the-middle"></div>
+                            <div class="furnishing sensor pir" id="pir-at-entrance"></div>
+                        </div>
+                        <div class="room" id="main-room">
+                            <div class="furnishing door"></div>
+                            <div class="furnishing sensor window"></div>
+                            <div class="furnishing sensorlight" id="light-main-left"></div>
+                            <div class="furnishing sensor light" id="light-main-right"></div>
+                            <div class="furnishing sensor radiator" id="radiator-main-1"></div>
+                        </div>
+                        <div class="room" id="bathroom">
+                            <div class="furnishing door"></div>
+                            <div class="furnishing sensor window"></div>
+                            <div class="furnishing sensor light" id="light-bathroom-left"></div>
+                            <div class="furnishing sensorlight" id="light-bathroom-right"></div>
+                            <div class="furnishing sensor boiler" id="boiler-bathroom-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="page-hero-subsections">
+                <div id="devices-info-subsection">
+                    <h3>Devices</h3>
+                    <ul id="device-container">
+                        <!-- Salon -->
+                        <li class="device-tile" id="main-room-light">
+                            <div class="device-name">rodzaj: <span>Oświetlenie</span></div>
+                            <div class="device-location">lokalizacja: <span>Salon</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>włączony</span></div>
+                        </li>
+                        <li class="device-tile" id="main-room-radiator">
+                            <div class="device-name">rodzaj: <span>Grzejnik</span></div>
+                            <div class="device-location">lokalizacja: <span>Salon</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>włączony</span></div>
+                        </li>
+                        <li class="device-tile" id="main-room-temperature">
+                            <div class="device-name">rodzaj: <span>Termometr</span></div>
+                            <div class="device-location">lokalizacja: <span>Salon</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>25</span></div>
+                        </li>
+                        <li class="device-tile" id="main-room-window">
+                            <div class="device-name">rodzaj: <span>Okno</span></div>
+                            <div class="device-location">lokalizacja: <span>Salon</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>zamknięte</span></div>
+                        </li>
+                        <!-- Bathroom-->
+                        <li class="device-tile" id="bathroom-light">
+                            <div class="device-name">rodzaj: <span>Oświetlenie</span></div>
+                            <div class="device-location">lokalizacja: <span>Łazienka</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>włączony</span></div>
+                        </li>
+                        <li class="device-tile" id="main-room-boiler">
+                            <div class="device-name">rodzaj: <span>Bojler</span></div>
+                            <div class="device-location">lokalizacja: <span>Łazienka</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>włączony</span></div>
+                        </li>
+                        <li class="device-tile" id="bathroom-window">
+                            <div class="device-name">rodzaj: <span>Okno</span></div>
+                            <div class="device-location">lokalizacja: <span>Łazienka</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>zamknięte</span></div>
+                        </li>
+                        <!--  Hallway plus kitchen-->
+                        <li class="device-tile" id="bathroom-light">
+                            <div class="device-name">rodzaj: <span>Oświetlenie</span></div>
+                            <div class="device-location">lokalizacja: <span>Przedpokój</span></div>
+                            <div class="device-status">status: <span>online</span></div>
+                            <div class="device-reading">odczyt: <span>włączony</span></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+
+        <div id="device-detail-info-container">
+            <h1 id="device-detail-name-input">Grzejnik</h2>
+                <div id="device-detail-control-panel">
+                    <h2>Panel sterowania</h2>
+                    <div id="device-detail-current-state">
+                        <span class="field-description">Status:</span>
+                        <span class="input-field" id="device-detail-current-state-input"></span>
+                    </div>
+                    <form id="device-detail-update-state">
+                        <label class="field-description">Zmień ręcznie status</label>
+                        <select name="device-detail-states-selector" id="device-detail-states-selector">
+                        </select>
+                    </form>
+                    <button id="update-device-state-btn">Wyślij komendę</button>
+                </div>
+                <div id="device-detail-info">
+                    <h2>Informacje</h2>
+                    <div id="device-detail-reading">
+                        <span class="field-description">Pomiar:</span>
+                        <span class="input-field" id="device-detail-reading-input"></span>
+                    </div>
+                    <div id="device-detail-location">
+                        <span class="field-description">Lokalizacja:</span>
+                        <span class="input-field" id="device-detail-location-input"></span>
+                    </div>
+                    <div id="device-detail-control-type">
+                        <span class="field-description">Sterowanie:</span>
+                        <span id="control-type">automatyczne</span>
+                    </div>
+
+                </div>
         </div>
-    </main>
-
-
-    <div id="device-detail-info-container">
-        <h1 id="device-detail-name">Grzejnik</h2>
-            <div id="device-detail-control-panel">
-                <h2>Panel sterowania</h2>
-                <div id="device-detail-current-state">
-                    <span class="field-description">Status:</span>
-                    <span id="device-state"></span>
-                </div>
-                <form id="device-detail-update-state">
-                    <label class="field-description">Zmień ręcznie status</label>
-                    <select name="state" id="desired-state">
-                    </select>
-                </form>
-                <button id="update-device-state-btn">Wyślij komendę</button>
-            </div>
-            <div id="device-detail-info">
-                <h2>Informacje</h2>
-                <div id="device-detail-reading">
-                    <span class="field-description">Pomiar:</span>
-                    <span id="reading"></span>
-                </div>
-                <div id="device-detail-location">
-                    <span class="field-description">Lokalizacja:</span>
-                    <span id="location"></span>
-                </div>
-                <div id="device-detail-control-type">
-                    <span class="field-description">Sterowanie:</span>
-                    <span id="control-type"></span>
-                </div>
-
-            </div>
     </div>
+    
 </body>
+
+
 
 </html>
