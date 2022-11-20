@@ -10,11 +10,11 @@ class Window:
         self.switch_pin = switch_pin
         self.mqtt = mqtt
         self.topic_prefix = '/'.join(['room',
-                                     str(room_id), 'window', str(window_id)], 'state')
+                                     str(room_id), 'window', str(window_id), 'state'])
         self.init_switch()
 
     def publish_state(self, pin):
-        self.mqtt.publish(self.topic_prefix+'rsp',
+        self.mqtt.publish(self.topic_prefix+'/rsp',
                           'open' if GPIO.input(self.switch_pin) == 1 else 'closed')
 
     def init_switch(self):
@@ -36,7 +36,7 @@ class Window:
             if message == b'open':
                 self.servo.value = -1
             elif message == b'closed':
-                self.servo.value = 0.5
+                self.servo.value = 0.6
 
 mqtt = MQTT.Client()
 mqtt.connect("siur123.pl", port = 18833)
