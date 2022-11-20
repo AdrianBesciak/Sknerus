@@ -17,6 +17,7 @@ class Window:
         self.mqtt = mqtt
         self.topic_prefix = '/'.join(['room',
                                      str(room_id), 'window', str(window_id), 'state'])
+        print(self.topic_prefix)
         self.init_switch()
 
     def publish_state(self, pin):

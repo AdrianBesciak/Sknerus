@@ -18,6 +18,7 @@ class Thermometer_BMP280:
                                      str(room_id), 'temperature', '0', 'value'])
         i2c = SMBus(1)
         self.sensor = BMP280(i2c_dev=i2c)
+        print(self.topic_prefix)
         print(self.sensor.get_temperature())
 
     def publish_state(self, pin):

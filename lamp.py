@@ -14,6 +14,7 @@ class Lamp:
         self.mqtt = mqtt
         self.topic_prefix = '/'.join(['room',
                                      str(room_id), 'light', '0', 'state'])
+        print(self.topic_prefix)
         self.init_pin()
 
     def publish_state(self, pin):
