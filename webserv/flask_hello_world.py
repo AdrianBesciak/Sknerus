@@ -1,8 +1,19 @@
-from flask import Flask, request, send_from_directory, Response, current_app, Blueprint, redirect, url_for
+from flask import Flask, request, send_from_directory, current_app, Blueprint, redirect, url_for
+from flask.wrappers import Response
 
 from utils_bp import utils_bp
+from mqtt_bp import mqtt_client, scheduler, mqtt_bp, MA_CONFIG
 
 app = Flask(__name__)
+app.config.from_mapping(
+    **MA_CONFIG
+)
+mqtt_client.init_app(app)
+scheduler.init_app(app)
+scheduler.start() # potrzebne?
+
+app.register_blueprint(utils_bp)
+app.register_blueprint(mqtt_bp)
 
 @app.route('/', methods=["GET"])
 def startscreen():
@@ -10,9 +21,14 @@ def startscreen():
 
 @app.route('/favicon.ico', methods=["GET"])
 def favicon():
-    pass
+    # nie dziala ale low prio
     # return redirect(url_for("utils.favicon"))
-    # return send_from_directory('', 'favicon.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory('', 'favicon.ico')
 
-app.register_blueprint(utils_bp)
-app.run("localhost", 5000)
+app.run(    
+    host = "localhost",
+    port = 5000,
+)
+
+
+
