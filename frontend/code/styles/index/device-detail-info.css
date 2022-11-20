@@ -1,0 +1,31 @@
+#device-detail-info-container{
+    padding-left: 5%;
+    background-image: linear-gradient(var(--marked-element-color), white);
+    border-right: solid 3px var(to top right,--marked-element-color);
+    height: 100%;
+    margin: 0;
+}
+
+.field-description {
+    font-weight: bold;
+}
+
+#device-detail-info-container *{
+    margin-top: 10px;
+    margin-bottom: 0;
+
+}
+
+#device-detail-control-panel, #device-detail-info{
+    display: flex;
+    flex-direction: column;
+    height: 20%;
+    justify-content: start;
+}
+#device-detail-name {
+    margin-top: 40px;
+    font-size: 2.5rem;    
+}
+
+
+

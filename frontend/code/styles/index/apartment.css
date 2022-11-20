@@ -1,0 +1,171 @@
+#page-hero-title{
+    margin-top: 40px;
+    font-size: 2.5rem;    
+}
+
+#apartment {
+    width: 700px;
+    height: 700px;
+    margin: auto;
+    position: relative;
+}
+
+#apartment *{
+    box-sizing: border-box;
+}
+
+.room {
+    border: solid 1px var(--primary-text-color);
+    position: absolute;
+}
+
+/* Rooms's position */
+#hallway-plus-kitchen {
+    top: 20%;
+    left: 55%;
+    width: 30%;
+    height: 60%;
+}
+
+#bathroom {
+    top: 20%;
+    left: 15%;
+    width: 40%;
+    height: 30%;
+}
+
+#main-room {
+    top: 50%;
+    left: 15%;
+    width: 40%;
+    height: 30%;
+}
+
+
+/* Furnishing */
+.room .furnishing {
+    border: solid 1px var(--primary-text-color);
+    position: absolute;
+    background-color:white; 
+    background-image: linear-gradient(white, var(--brighter-background-color));
+}
+
+.room .sensor {
+    background-image: linear-gradient(white, var(--marked-element-color));
+}
+
+.light {
+    border-radius: 50%;
+    width: 3%;
+    height: 4%;
+}
+
+.radiator{
+    width: 24%;
+    height: 5%;
+    border-radius: 40%;
+}
+
+.boiler {
+    width: 24%;
+    height: 12%;
+    border-radius: 40%;
+}
+
+.door {
+    top: 32%;
+    left: 98%;
+    width: 4%;
+    height: 36%;
+}
+
+.window {
+    top: 35%;
+    left: -1.5%;
+    width: 3%;
+    height: 30%;
+}
+
+/* Hallway-plus-kitchen */
+#hallway-plus-kitchen .door {
+    top: 40%;
+    left: 97%;
+    width: 6%;
+    height: 20%;
+}
+
+#hallway-plus-kitchen .light {
+    width: 4%;
+    height: 2%;
+}
+
+#hallway-plus-kitchen .pir {
+    width: 4%;
+    height: 4%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+#hallway-plus-kitchen #light-on-side {
+    top: 98%;
+    left: 48%;
+}
+
+#hallway-plus-kitchen #light-in-the-middle {
+    top: 49%;
+    left: 0%;
+}
+
+#hallway-plus-kitchen #pir-at-entrance{
+  top:65%;
+  left: 96%;
+}
+/* Sensors main room*/
+
+#main-room #light-main-left {
+    top: 96%;
+    left: 30%;
+}
+
+#main-room #light-main-right {
+    top: 96%;
+    left: 67%;
+}
+
+#main-room #radiator-main-1 {
+    top: 0%;
+    left: 38%;
+}
+
+/* Sensors bathroom  */
+#bathroom #light-bathroom-left {
+    top: 0%;
+    left: 30%;
+}
+
+#bathroom #light-bathroom-right {
+    top: 0%;
+    left: 67%;
+}
+
+#bathroom #boiler-bathroom-1 {
+    top: 0%;
+    left: 38%;
+}
+
+/* Border-width-fix */
+#bathroom {
+    border-left: solid 2px var(--primary-text-color);
+    border-top: solid 2px var(--primary-text-color);
+}
+
+#main-room {
+    border-bottom: solid 2px var(--primary-text-color);
+    border-left: solid 2px var(--primary-text-color);
+}
+
+#hallway-plus-kitchen {
+    border-top: solid 2px var(--primary-text-color);
+    border-right: solid 2px var(--primary-text-color);
+    border-bottom: solid 2px var(--primary-text-color);
+}

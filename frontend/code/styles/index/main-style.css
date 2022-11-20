@@ -2,47 +2,80 @@ body {
     margin: 0;
     height: 100%;
     display: grid;
-    justify-items: space-around;
-    align-items: center;
-    grid-template: 1 fr / 1fr 4fr;
-    grid-template-areas: "nav page-hero";
+    align-items: stretch;
+    column-gap: 1%;
+    grid-template: "nav page-hero device-info" 1fr
+        /2fr 6fr 3fr;
 }
-
 
 /* Navigation */
+
 nav {
-    height: 100%;
-    font-size: 1.5rem;    
     grid-area: nav;
-    /* display: grid;
-    justify-items: space-around;
-    align-items: center;
-    grid-template: 4 fr  1fr / 1fr;
-    grid-template-areas: "page-hero-nav control-nav"; */
-    margin: 5%;
-}
-
-nav ul{
-    list-style: none;
+    /* height: 100%; */
+    font-size: 1.2rem;
     margin: 0;
-    padding: 5% 0;
+    padding: 3%;
+    display: grid;
+    grid-template: "page-hero-nav" 4fr
+        "control-nav" 1fr
+        / 1fr;
+    border-right: solid 2px var(--brighter-background-color);
+    background-image: linear-gradient(white, var(--brighter-background-color));
 }
 
-nav li{
-    padding: 2% 0;
-}
-
-#service-info{
+#service-info {
     display: flex;
     align-items: center;
     justify-content: left;
 }
 
-#service-info #logo-icon{
+#logo-icon {
+    margin: 0 2%;
+    padding: 4%;
     height: 3rem;
+    background-color: var(--darker-background-color);
+    border-radius: 50%;
+    border: solid 1px var(--secondary-text-color);
 }
 
-/* Page Hero */
+
+nav ul {
+    list-style: none;
+    margin: 0 5%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+}
+
+nav li {
+    margin: 8% 0;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    padding: 10% 0;
+}
+
+nav li:hover {
+    background: var(--darker-background-color);
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+.nav-icon {
+    height: 1.2rem;
+    margin: 0 10px;
+}
+
+/* Page hero */
 main {
     grid-area: page-hero;
+}
+
+/* Device info */
+#device-detail-info-container {
+    grid-area: device-info;
 }
